@@ -1,15 +1,23 @@
-public class SepllField extends CardField{
+import java.util.ArrayList;
 
-    public SepllField() {
-        this.setNumber(3);
+public class SepllField {
+
+    ArrayList<Card> cards = new ArrayList<>();
+    static int limit = 3;
+
+    public SepllField(){
+
     }
 
+    public void addCard(SpellCards card){
+        if (cards.size()<=limit && !card.spellType.equals("Instant"))
+            cards.add(card);
+    }
 
-    public void addCard(Card card){
-        if(this.number >= 0){
-            this.cards.add(card);
+    public void clearCards(){
+        for (int i = 0; i <cards.size() ; i++) {
+            cards.remove(i);
         }
-        number--;
     }
 
     public Card findCard(String string){
@@ -19,5 +27,10 @@ public class SepllField extends CardField{
             }
         }
         return null;
+    }
+
+    public void clearCard(String string){
+        Card card = findCard(string);
+        cards.remove(card);
     }
 }

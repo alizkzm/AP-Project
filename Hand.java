@@ -1,10 +1,24 @@
-public class Hand extends CardField {
-    public Hand(String name) {
-        this.name = name;
+import java.util.ArrayList;
+
+public class Hand  {
+    ArrayList<Card> cards = new ArrayList<>();
+
+    public Hand(){
+
+    }
+
+    public void setCards(ArrayList<Card> cards) {
+        this.cards = cards;
     }
 
     public void addCard(Card card){
-        this.cards.add(card);
+        cards.add(card);
+    }
+
+    public void clearCards(){
+        for (int i = 0; i <cards.size() ; i++) {
+            cards.remove(i);
+        }
     }
 
     public Card findCard(String string){
@@ -14,5 +28,10 @@ public class Hand extends CardField {
             }
         }
         return null;
+    }
+
+    public void clearCard(String string){
+        Card card = findCard(string);
+        cards.remove(card);
     }
 }

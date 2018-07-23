@@ -1,20 +1,29 @@
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Deck extends CardField{
-    public Deck(String name) {
-        this.name = name;
+public class Deck {
+    ArrayList<Card> cards = new ArrayList<>();
+    int capacity;
+    public void Deck(){
+        //ToDo
+        int random = 0;
+        capacity = random;
     }
 
-    public void Random(){
-        Random int random = new Random(5);
-        this.setNumber(random+25);
-    }
-
-    public void addCard(Card card){
-        if(this.number >= 0){
-            this.cards.add(card);
+    public void setCards(ArrayList<Card> cards) {
+        if(cards.size()==capacity){
+            this.cards = randomize(cards);
         }
-        number--;
+        else{
+            System.out.println("Agian Add Cards");
+            return;
+        }
+    }
+
+    public void clearCards(){
+        for (int i = 0; i <cards.size() ; i++) {
+            cards.remove(i);
+        }
     }
 
     public Card findCard(String string){
@@ -24,5 +33,15 @@ public class Deck extends CardField{
             }
         }
         return null;
+    }
+
+    public void addCard(Card card){
+        cards.add(card);
+    }
+
+    public ArrayList<Card> randomize(ArrayList<Card> cards){
+        //ToDo
+        ArrayList<Card> cardsOut = null;
+        return cardsOut;
     }
 }
